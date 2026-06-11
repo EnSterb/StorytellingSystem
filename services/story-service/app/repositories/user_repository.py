@@ -1,0 +1,42 @@
+from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
+
+from app.models.user import User
+from app.repositories.base import BaseRepository
+
+
+class UserRepository(BaseRepository[User]):
+
+    def __init__(self, session: AsyncSession) -> None:
+        super().__init__(User, session)
+
+    async def get_by_email(self, email: str) -> User | None:
+        result = await self._session.execute(
+            select(User).where(User.email == email)
+        )
+        return result.scalar_one_or_none()
+
+    async def get_by_username(self, username: str) -> User | None:
+        result = await self._session.execute(
+            select(User).where(User.username == username)
+        )
+        return result.scalar_one_or_none()
+
+    async def exists_by_email(self, email: str) -> bool:
+        result = await self._session.execute(
+            select(User.id).where(User.email == email)
+        )
+        return result.scalar_one_or_none() is not None
+
+    async def get_by_verification_token(self, token: str) -> User | None:
+        result = await self._session.execute(
+            select(User).where(User.verification_token == token)
+        )
+        return result.scalar_one_or_none()
+
+    async def activate(self, user: User) -> User:
+        user.is_active = True
+        user.verification_token = None
+        await self._session.flush()
+        await self._session.refresh(user)
+        return user

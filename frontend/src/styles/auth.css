@@ -1,0 +1,98 @@
+.auth-container {
+  max-width: 420px;
+  margin: 100px auto;
+  padding: 40px;
+  background-color: #FDF8F2;
+  border-radius: 16px;
+  border: 1px solid #C8CDB7;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.auth-container h2 {
+  margin-bottom: 24px;
+  color: #066873;
+  font-size: 28px;
+}
+
+.auth-container input {
+  display: block;
+  width: 100%;
+  margin-bottom: 14px;
+  padding: 12px 16px;
+  background-color: #F5F0E8;
+  border: 1px solid #C8CDB7;
+  border-radius: 8px;
+  color: #3a3a3a;
+  font-size: 15px;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.auth-container input:focus {
+  border-color: #066873;
+}
+
+.auth-container button {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.auth-container .error {
+  color: #F7726C;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.auth-container p {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 14px;
+  color: #3a3a3a;
+}
+.auth-container {
+  margin: 120px auto 40px;
+}
+.auth-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px 28px;
+  border: 2px solid #C8CDB7;
+  max-width: 420px;
+  width: 100%;
+}
+
+.form-disabled {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Спиннер ожидания */
+.spinner {
+  margin: 10px auto 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 3px solid #C8CDB7;
+  border-top-color: #066873;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.field {
+  margin-bottom: 10px;
+}
+
+.error.small {
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.success {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #066873;
+}

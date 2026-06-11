@@ -1,0 +1,22 @@
+[project]
+name = "storytelling"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.13"
+dependencies = [
+    "alembic>=1.18.4",
+    "asyncpg>=0.31.0",
+    "bcrypt>=5.0.0",
+    "dependency-injector>=4.48.3",
+    "fastapi>=0.135.1",
+    "fastapi-mail>=1.6.2",
+    "openai>=2.29.0",
+    "pgvector>=0.4.2",
+    "pwdlib[argon2]>=0.3.0",
+    "pydantic-settings>=2.13.1",
+    "python-jose>=3.5.0",
+    "python-multipart>=0.0.22",
+    "sentence-transformers>=5.3.0",
+    "sqlalchemy>=2.0.48",
+    "uvicorn>=0.42.0",
+]

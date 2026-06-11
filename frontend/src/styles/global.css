@@ -1,0 +1,111 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #F5F0E8;
+  color: #3a3a3a;
+  font-family: 'Segoe UI', sans-serif;
+  min-height: 100vh;
+}
+
+a {
+  color: #066873;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #F7726C;
+}
+
+/* ── Основная кнопка ── */
+button {
+  cursor: pointer;
+  border: 2px solid #066873;
+  border-radius: 8px;
+  padding: 9px 20px;
+  background-color: #066873;
+  color: #F5F0E8;
+  font-size: 15px;
+  font-weight: 600;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+button:hover {
+  background-color: #F7726C;
+  border-color: #F7726C;
+  color: #F5F0E8;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Ghost (вторичная) ── */
+.btn-ghost {
+  background: transparent;
+  border: 2px solid #C8CDB7;
+  color: #3a3a3a;
+  font-weight: 500;
+}
+
+.btn-ghost:hover {
+  background: #ede8df;
+  border-color: #3a3a3a;
+  color: #3a3a3a;
+}
+
+/* ── Danger (outline) ── */
+.btn-danger {
+  background: transparent;
+  border: 2px solid #F7726C;
+  color: #F7726C;
+  font-weight: 500;
+}
+
+.btn-danger:hover {
+  background: #F7726C;
+  border-color: #F7726C;
+  color: #F5F0E8;
+}
+
+/* ── Danger Solid (в модалке подтверждения) ── */
+.btn-danger-solid {
+  background: #F7726C;
+  border: 2px solid #F7726C;
+  color: #F5F0E8;
+  font-weight: 600;
+}
+
+.btn-danger-solid:hover {
+  background: #e55d57;
+  border-color: #e55d57;
+}
+
+/* ── Tab button — сбрасываем глобальные стили кнопки ── */
+.tab-btn {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  padding: 10px 20px;
+  color: #6a7060;
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+
+.tab-btn:hover {
+  background: none;
+  border-color: transparent;
+  color: #3a3a3a;
+}
+
+.tab-btn.active {
+  color: #3a3a3a;
+  border-bottom-color: #066873;
+  font-weight: 600;
+}

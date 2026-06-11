@@ -1,0 +1,73 @@
+services:
+
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-story_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-story_pass}
+      POSTGRES_DB: ${POSTGRES_DB:-story_db}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-story_user}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  api-gateway:
+    build:
+      context: ./services/api-gateway
+    container_name: api-gateway
+    restart: unless-stopped
+    env_file: ./services/api-gateway/.env
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      story-service:
+        condition: service_started
+      rag-service:
+        condition: service_started
+      llm-service:
+        condition: service_started
+
+  story-service:
+    build:
+      context: ./services/story-service
+    container_name: story-service
+    restart: unless-stopped
+    env_file: ./services/story-service/.env
+    ports:
+      - "8001:8001"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  rag-service:
+    build:
+      context: ./services/rag-service
+    container_name: rag-service
+    restart: unless-stopped
+    env_file: ./services/rag-service/.env
+    ports:
+      - "8002:8002"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  llm-service:
+    build:
+      context: ./services/llm-service
+    container_name: llm-service
+    restart: unless-stopped
+    env_file: ./services/llm-service/.env
+    ports:
+      - "8003:8003"
+
+volumes:
+  postgres_data:
